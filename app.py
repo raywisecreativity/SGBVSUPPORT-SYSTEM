@@ -121,7 +121,11 @@ with st.sidebar:
     if st.button("🎓 Training"):
         st.session_state.page = "training"
         st.rerun()
-
+        
+st.markdown("---")
+st.markdown("### 👨‍💻 Developer")
+st.markdown("**Raywise Creativity**")
+st.markdown("[Visit Website](https://raywisecreativity.netlify.app/)")
 # =========================
 # PAGE STATE
 # =========================
@@ -379,3 +383,16 @@ st.markdown("""
 style="position:fixed;bottom:20px;right:20px;"/>
 </a>
 """, unsafe_allow_html=True)
+
+st.markdown("---")
+st.markdown(
+    """
+    <div style='text-align: center; font-size: 14px;'>
+        Developed by <b>Raywise Creativity</b> 🚀 <br>
+        🌐 <a href="https://raywisecreativity.netlify.app/" target="_blank">
+        https://raywisecreativity.netlify.app/
+        </a>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
