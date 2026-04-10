@@ -1,0 +1,888 @@
+SEXUAL AND GENDER-BASED VIOLENCE (SGBV)
+
+Definition:
+Sexual and Gender-Based Violence (SGBV) refers to any harmful act that is perpetrated against a person’s will and is based on socially ascribed gender differences. It includes physical, sexual, emotional, psychological, and economic abuse.
+
+Types of SGBV:
+- Physical violence (beating, assault)
+- Sexual violence (rape, sexual assault, harassment)
+- Emotional and psychological abuse (threats, intimidation, humiliation)
+- Economic abuse (denial of financial resources or control over money)
+- Harmful traditional practices (forced marriage, female genital mutilation)
+
+Key Facts:
+- SGBV can affect anyone regardless of age, gender, or background
+- It is never the survivor’s fault
+- Survivors have the right to safety, dignity, and care
+- Early response (within 72 hours) is very important for medical care
+
+Support and Response:
+- Survivors are encouraged to seek immediate help at the nearest Primary Health Centre (PHC)
+- Medical services are confidential and can be accessed without a police report
+- Emotional support from trusted individuals or professionals is important
+- Legal and social support services may also be available
+
+Safety Guidelines:
+- Always prioritize your safety
+- If you are in immediate danger, seek help from emergency services or nearby authorities
+- Reach out to trusted friends, family, or community support systems
+
+Role of This Chatbot:
+This chatbot is designed to:
+- Provide general information about SGBV
+- Offer supportive and non-judgmental responses
+- Guide users to appropriate help and services such as PHCs
+- Encourage safe and informed decision-making
+
+Important Notice:
+This chatbot does NOT replace professional medical, legal, or psychological services. It is only for informational and support purposes.
+
+Always seek help from qualified professionals when needed.
+
+  
+  SGBV AI CHATBOT TRAINING 
+DATASET 
+ 
+Context – Question – Answer (1–150) 
+  
+  1 
+ 
+Context: SGBV refers to harmful acts based on gender inequality. 
+Question: What is sexual and gender-based violence? 
+Answer: Sexual and gender-based violence is any act that causes harm based on gender roles or power imbalance. It includes physical, sexual, emotional, and economic abuse. 
+  
+  2 
+ 
+Context: SGBV includes multiple forms of abuse. 
+Question: What are the types of SGBV? 
+Answer: Types include sexual violence, physical abuse, emotional abuse, economic violence, and harmful traditional practices. 
+  
+  3 
+ 
+Context: Consent is required in all relationships. 
+Question: Can rape happen in marriage? 
+Answer: Yes. Consent is required in all relationships, including marriage. Any sexual act without consent is rape. 
+  
+  4 
+ 
+Context: Medical care is urgent after assault. 
+Question: What should I do if I was sexually assaulted today? 
+Answer: Go to a Primary Health Centre immediately. Medical care within 72 hours helps prevent infections and unwanted pregnancy. 
+  
+  5 
+ 
+Context: Reporting is optional for adults. 
+Question: Do I need to report to the police before getting help? 
+Answer: No. You can receive medical care without reporting to the police. Reporting is your decision. 
+  
+  6 
+ 
+Context: Survivors have rights. 
+Question: What rights do survivors have? 
+Answer: Survivors have the right to safety, dignity, confidentiality, medical care, and to decide what steps to take. 
+  
+  7 
+ 
+Context: Confidentiality protects survivors. 
+Question: Will my case be kept private? 
+Answer: Yes. Your information will be kept confidential unless there is a risk to a child or serious danger. 
+  
+  8 
+ 
+Context: Emotional support is important. 
+Question: What should someone say to a survivor? 
+Answer: They should say supportive things like “I believe you” and “This is not your fault.” 
+  
+  9 
+ 
+Context: Health centers provide first support. 
+Question: Where can I get help? 
+Answer: You can go to a Primary Health Centre for medical care and referral services. 
+  
+  10 
+ 
+Context: Children need protection. 
+Question: What happens if a child is abused? 
+Answer: The case must be reported immediately to ensure the child’s safety. 
+  
+  11 
+Context: Violence is not only physical. 
+Question: Is SGBV only physical violence? 
+Answer: No. It includes emotional, sexual, and economic abuse as well. 
+  
+  12 
+ 
+Context: Survivors are not to blame. 
+Question: Is it my fault if I was abused? 
+Answer: No. It is never the survivor’s fault. 
+  
+  13 
+ 
+Context: Most perpetrators are known. 
+Question: Is rape usually by strangers? 
+Answer: No. It is often committed by someone known to the survivor. 
+  
+  14 
+ 
+Context: Emotional abuse affects mental health. 
+Question: What is emotional abuse? 
+Answer: It includes insults, threats, and controlling behavior. 
+  
+  15 
+Context: Economic abuse limits independence. 
+Question: What is economic violence? 
+Answer: It involves controlling money or denying access to resources. 
+  
+  16 
+ 
+Context: Safety is priority. 
+Question: What should I do if I am in danger? 
+Answer: Move to a safe place and seek immediate help. 
+  
+  17 
+ 
+Context: Survivors make their own decisions. 
+Question: Do I have to leave my partner? 
+Answer: No. The decision is yours. 
+  
+  18 
+ 
+Context: Reporting requires consent. 
+Question: Can someone report my case without me? 
+Answer: No, unless it involves a child or serious risk. 
+  
+  19 
+Context: Children cannot consent. 
+Question: Can a child agree to sex? 
+Answer: No. It is always considered abuse. 
+  
+  20 
+ 
+Context: Listening is key. 
+Question: What is the first response to abuse disclosure? 
+Answer: Listen, believe, and support. 
+  
+ 
+  21 
+ 
+Context: Survivors need emotional reassurance. 
+Question: What should I do if I feel scared after abuse? 
+Answer: It is normal to feel scared. Try to stay in a safe place and reach out to someone you trust or a health centre for support. 
+  
+  22 
+ 
+Context: SGBV affects mental health. 
+Question: Can abuse affect my mental health? 
+Answer: Yes. Abuse can lead to anxiety, depression, and trauma. Seeking support can help you heal. 
+  
+23
+Context: Support services are available. 
+Question: Who can I talk to about abuse? 
+Answer: You can talk to a trusted person, counselor, or visit a Primary Health Centre for support. 
+  
+  24 
+ 
+Context: Survivors deserve dignity. 
+Question: Will I be judged if I report abuse? 
+Answer: No. You deserve to be treated with respect and dignity at all times. 
+  
+  25 
+ 
+Context: Help is available anytime. 
+Question: Can I seek help at night? 
+Answer: Yes. Emergency services and some health centres are available at all times. 
+  
+  26 
+ 
+Context: Evidence can help but is not required. 
+Question: Should I wash after sexual assault? 
+Answer: It is best not to wash before going to a health centre, but you can still receive care even if you have washed. 
+  
+27
+Context: Clothing may be evidence. 
+Question: Should I change my clothes after assault? 
+Answer: If possible, keep the clothes you were wearing as they may help as evidence, but your health comes first. 
+  
+  28 
+ 
+Context: Medical care prevents complications. 
+Question: Why is 72 hours important after rape? 
+Answer: Treatment to prevent HIV and pregnancy is most effective within 72 hours. 
+  
+  29 
+ 
+Context: Consent must be clear. 
+Question: What is consent? 
+Answer: Consent means freely agreeing to something without pressure, fear, or force. 
+  
+  30 
+ 
+Context: Silence is not consent. 
+Question: If I didn’t say no, is it consent? 
+Answer: No. Consent must be clear and voluntary. Silence or fear is not consent. 
+  
+ 
+31
+Context: Coercion is abuse. 
+Question: Is it abuse if I was forced emotionally? 
+Answer: Yes. Pressure or manipulation to force agreement is abuse. 
+  
+  32 
+ 
+Context: SGBV can happen anywhere. 
+Question: Can SGBV happen at school or work? 
+Answer: Yes. It can happen in homes, schools, workplaces, or public spaces. 
+  
+  33 
+ 
+Context: Men can also be survivors. 
+Question: Can men experience SGBV? 
+Answer: Yes. Anyone can experience SGBV regardless of gender. 
+  
+  34 
+ 
+Context: Services are for everyone. 
+Question: Can boys report sexual abuse? 
+Answer: Yes. Boys and men can and should seek help if abused. 
+35
+Context: Shame should not stop reporting. 
+Question: I feel ashamed, should I still report? 
+Answer: Yes. You deserve help and support. Abuse is not your fault. 
+  
+  36 
+ 
+Context: Delay does not remove rights. 
+Question: Can I report abuse after many days? 
+Answer: Yes. You can still seek help and support at any time. 
+  
+  37 
+ 
+Context: Support includes medical care. 
+Question: What services will I get at a health centre? 
+Answer: You will receive medical care, emotional support, and referrals. 
+  
+  38 
+ 
+Context: Survivors control their choices. 
+Question: Can I refuse certain services? 
+Answer: Yes. You have the right to choose what services you accept. 
+39
+Context: Privacy is respected. 
+Question: Will people find out if I seek help? 
+Answer: No. Your case will be handled confidentially. 
+  
+  40 
+ 
+Context: Support is non-judgmental. 
+Question: Will I be blamed for what happened? 
+Answer: No. You will be supported without blame or judgment. 
+  
+  41 
+ 
+Context: SGBV includes threats. 
+Question: Is threatening someone abuse? 
+Answer: Yes. Threats are a form of emotional abuse. 
+  
+  42 
+ 
+Context: Control is a sign of abuse. 
+Question: Is controlling behavior abuse? 
+Answer: Yes. Controlling actions can be a form of SGBV. 
+43
+Context: Isolation is harmful. 
+Question: Is stopping me from seeing people abuse? 
+Answer: Yes. Isolation is a form of emotional abuse. 
+  
+  44 
+ 
+Context: Financial control is violence. 
+Question: Is denying money abuse? 
+Answer: Yes. It is economic violence. 
+  
+  45 
+ 
+Context: Help is available for all ages. 
+Question: Can teenagers get help for abuse? 
+Answer: Yes. Support services are available for all age groups. 
+  
+  46 
+ 
+Context: Safety planning is important. 
+Question: What is a safety plan? 
+Answer: It is a plan to help you stay safe in dangerous situations. 
+47
+Context: Trusted support matters. 
+Question: Who is a trusted person? 
+Answer: Someone you feel safe with, like a family member, friend, or counselor. 
+  
+  48 
+ 
+Context: Documentation can help. 
+Question: Should I keep records of abuse? 
+Answer: Yes. Keeping records can help if you decide to report. 
+  
+  49 
+ 
+Context: Fear is common after abuse. 
+Question: Is it normal to feel confused after abuse? 
+Answer: Yes. Many survivors feel confused, and support can help. 
+  
+  50 
+ 
+Context: Healing takes time. 
+Question: Will I recover from abuse? 
+Answer: Yes. With the right support, healing is possible. 
+ 
+51
+Context: Support services include counseling. 
+Question: Can I talk to a counselor after abuse? 
+Answer: Yes. Counseling can help you process your experience and support your healing. 
+  
+  52 
+ 
+Context: Healing is a gradual process. 
+Question: How long does recovery take? 
+Answer: Recovery is different for everyone. With support, healing is possible over time. 
+  
+  53 
+ 
+Context: Survivors deserve respect. 
+Question: Will I be treated with respect at a health centre? 
+Answer: Yes. You should be treated with dignity, respect, and care. 
+  
+  54 
+ 
+Context: Fear should not stop help-seeking. 
+Question: I am afraid to speak up, what should I do? 
+Answer: You can start by talking to someone you trust or visiting a support center. 
+55
+Context: Abuse can be repeated. 
+Question: What if the abuse keeps happening? 
+Answer: You should seek help immediately and create a safety plan. 
+  
+  56 
+ 
+Context: Documentation can support cases. 
+Question: Can photos be used as evidence? 
+Answer: Yes, but your safety and health are more important. 
+  
+  57 
+ 
+Context: SGBV affects all communities. 
+Question: Does SGBV happen in every community? 
+Answer: Yes. It can happen anywhere regardless of location or background. 
+  
+  58 
+ 
+Context: Survivors may feel isolated. 
+Question: Why do I feel alone after abuse? 
+Answer: Many survivors feel isolated, but support is available to help you. 
+59
+Context: Help is always available. 
+Question: Can I get help without money? 
+Answer: Yes. Many services are free of charge. 
+  
+  60 
+ 
+Context: Reporting is a personal choice. 
+Question: Can I change my mind after reporting? 
+Answer: Yes. You have the right to decide what happens next. 
+  
+  61 
+ 
+Context: Survivors may face threats. 
+Question: What if the abuser threatens me? 
+Answer: Seek immediate help and prioritize your safety. 
+  
+  62 
+ 
+Context: Support includes legal aid. 
+Question: Can I get legal help? 
+Answer: Yes. Legal aid services are available for survivors. 
+63
+Context: Children need special protection. 
+Question: Who protects children from abuse? 
+Answer: Child protection services and authorities ensure children’s safety. 
+  
+  64 
+ 
+Context: Abuse can affect education. 
+Question: Can abuse affect my school life? 
+Answer: Yes. It can affect focus and performance, but support can help. 
+  
+  65 
+ 
+Context: Abuse impacts physical health. 
+Question: Can abuse affect my body? 
+Answer: Yes. It can cause injuries and health problems. 
+  
+  66 
+ 
+Context: Emotional reactions vary. 
+Question: Is it normal to feel angry after abuse? 
+Answer: Yes. Different emotions are normal after such experiences. 
+67
+Context: Support systems matter. 
+Question: Can friends help me recover? 
+Answer: Yes. Support from trusted people can help healing. 
+  
+  68 
+ 
+Context: Survivors deserve choices. 
+Question: Can I choose not to talk about it? 
+Answer: Yes. You decide when and how to share your experience. 
+  
+  69 
+ 
+Context: Help can be confidential. 
+Question: Can I seek help anonymously? 
+Answer: Yes. Some services allow anonymous support. 
+  
+  70 
+ 
+Context: SGBV includes harassment. 
+Question: Is sexual harassment SGBV? 
+Answer: Yes. It is a form of sexual violence. 
+71
+Context: Online abuse is also real. 
+Question: Is online harassment abuse? 
+Answer: Yes. Online harassment is a form of SGBV. 
+  
+  72 
+ 
+Context: Support includes medical exams. 
+Question: Will I be examined at the hospital? 
+Answer: Yes, but only with your consent. 
+  
+  73 
+ 
+Context: Consent is always required. 
+Question: Can medical staff force treatment? 
+Answer: No. You must give consent before any treatment. 
+  
+  74 
+ 
+Context: Survivors control decisions. 
+Question: Can I refuse a medical exam? 
+Answer: Yes. You have the right to refuse. 
+75
+Context: Abuse includes intimidation. 
+Question: Is intimidation abuse? 
+Answer: Yes. It is a form of emotional violence. 
+  
+  76 
+ 
+Context: Abuse may involve control. 
+Question: Is checking my phone abuse? 
+Answer: Yes, if it is done to control or monitor you. 
+  
+  77 
+ 
+Context: Survivors need support. 
+Question: Can I bring someone with me for help? 
+Answer: Yes. You can bring a trusted person. 
+  
+  78 
+ 
+Context: Healing includes support groups. 
+Question: Are support groups helpful? 
+Answer: Yes. They help you connect with others. 
+79
+Context: Abuse can cause fear. 
+Question: Why do I feel unsafe everywhere? 
+Answer: Trauma can cause fear, but support can help restore safety. 
+  
+  80 
+ 
+Context: Survivors need reassurance. 
+Question: Will things get better? 
+Answer: Yes. With support, recovery is possible. 
+  
+  81 
+ 
+Context: SGBV includes forced acts. 
+Question: Is forcing someone to do something abuse? 
+Answer: Yes. Any forced act is abuse. 
+  
+  82 
+ 
+Context: Survivors deserve justice. 
+Question: Can perpetrators be punished? 
+Answer: Yes. Legal systems can hold them accountable. 
+83
+Context: Support services are trained. 
+Question: Are health workers trained for SGBV? 
+Answer: Yes. They are trained to support survivors. 
+  
+  84 
+ 
+Context: Survivors may feel guilt. 
+Question: Why do I blame myself? 
+Answer: Self-blame is common but not true. It is not your fault. 
+  
+  85 
+ 
+Context: Abuse can affect relationships. 
+Question: Can abuse affect my relationships? 
+Answer: Yes, but support can help rebuild trust. 
+  
+  86 
+ 
+Context: Support includes referrals. 
+Question: Will I be referred to other services? 
+Answer: Yes. You may be referred for more support. 
+87
+Context: Survivors can seek justice later. 
+Question: Can I take legal action later? 
+Answer: Yes. You can decide at any time. 
+  
+  88 
+ 
+Context: Abuse includes exploitation. 
+Question: What is sexual exploitation? 
+Answer: It is taking advantage of someone sexually for benefit. 
+  
+  89 
+ 
+Context: Survivors deserve safety. 
+Question: Can I get protection from my abuser? 
+Answer: Yes. Authorities can help ensure your safety. 
+  
+  90 
+ 
+Context: Trauma affects behavior. 
+Question: Why do I feel different after abuse? 
+Answer: Trauma can change feelings and behavior, but help is available. 
+91
+Context: Support includes guidance. 
+Question: Can someone guide me on what to do next? 
+Answer: Yes. Support workers can guide you. 
+  
+  92 
+ 
+Context: Survivors need time. 
+Question: Is it okay to take time before acting? 
+Answer: Yes. You can take your time. 
+  
+  93 
+ 
+Context: Abuse includes coercion. 
+Question: Is forcing through pressure abuse? 
+Answer: Yes. Pressure or coercion is abuse. 
+  
+  94 
+ 
+Context: Survivors deserve understanding. 
+Question: Will people understand me? 
+Answer: Yes. Trained workers will support you. 
+95
+Context: SGBV includes stalking. 
+Question: Is stalking abuse? 
+Answer: Yes. It is a form of violence. 
+  
+  96 
+ 
+Context: Survivors can rebuild confidence. 
+Question: Can I feel normal again? 
+Answer: Yes. Healing can restore your confidence. 
+  
+  97 
+ 
+Context: Abuse affects emotions. 
+Question: Why do I feel numb? 
+Answer: Numbness is a common trauma response. 
+  
+  98 
+ 
+Context: Support helps healing. 
+Question: Does talking help recovery? 
+Answer: Yes. Talking can help process emotions. 
+99
+Context: Survivors need care. 
+Question: Can I get free treatment? 
+Answer: Yes. Many services are free. 
+  
+  100 
+ 
+Context: Survivors deserve hope. 
+Question: Is recovery possible after abuse? 
+Answer: Yes. With the right support, healing is possible. 
+  
+  101 
+ 
+Context: Survivors deserve safe spaces. 
+Question: Where can I feel safe after abuse? 
+Answer: You can go to a trusted person’s home or a health centre where support is available. 
+  
+  102 
+ 
+Context: Immediate support is important. 
+Question: Who should I contact first after abuse? 
+Answer: You can contact a trusted person or visit a Primary Health Centre immediately. 
+103
+Context: Survivors may feel overwhelmed. 
+Question: What if I don’t know what to do? 
+Answer: That’s okay. You can seek help from trained professionals who will guide you. 
+  
+  104 
+ 
+Context: SGBV affects daily life. 
+Question: Can abuse affect my daily activities? 
+Answer: Yes. It can affect sleep, work, and relationships, but support can help. 
+  
+  105 
+ 
+Context: Survivors need emotional support. 
+Question: Can I cry after abuse? 
+Answer: Yes. Expressing emotions is a normal part of healing. 
+  
+  106 
+ 
+Context: Trauma responses vary. 
+Question: Is it normal to feel nothing after abuse? 
+Answer: Yes. Feeling numb is a common response to trauma. 
+107
+Context: Survivors should not isolate. 
+Question: Should I keep everything to myself? 
+Answer: It helps to talk to someone you trust or a professional. 
+  
+  108 
+ 
+Context: Help is available regardless of time passed. 
+Question: Can I still get help after weeks? 
+Answer: Yes. Support is available at any time. 
+  
+  109 
+ 
+Context: Survivors deserve medical attention. 
+Question: Should I still go to the hospital after days? 
+Answer: Yes. Medical care and support are still important. 
+  
+  110 
+ 
+Context: Abuse affects confidence. 
+Question: Why do I feel weak after abuse? 
+Answer: Abuse can affect confidence, but support can help rebuild strength. 
+111
+Context: Support includes reassurance. 
+Question: Will someone believe me? 
+Answer: Yes. Trained responders are there to listen and believe you. 
+  
+  112 
+ 
+Context: Survivors deserve justice. 
+Question: Can justice be delayed? 
+Answer: Yes. You can choose to pursue justice at any time. 
+  
+  113 
+ 
+Context: SGBV includes exploitation. 
+Question: Is exchanging favors for sex abuse? 
+Answer: Yes. That is sexual exploitation. 
+  
+  114 
+ 
+Context: Survivors deserve control. 
+Question: Can I decide who knows about my case? 
+Answer: Yes. You control who is informed, except in special cases like child protection. 
+115
+Context: Safety planning helps prevention. 
+Question: How can I protect myself? 
+Answer: Create a safety plan and stay connected to trusted people. 
+  
+  116 
+ 
+Context: Survivors can rebuild trust. 
+Question: Can I trust people again? 
+Answer: Yes. With time and support, trust can be rebuilt. 
+  
+  117 
+ 
+Context: Abuse affects emotions. 
+Question: Why do I feel angry all the time? 
+Answer: Anger is a normal response to trauma. 
+  
+  118 
+ 
+Context: Survivors deserve healing. 
+Question: Can therapy help me? 
+Answer: Yes. Therapy can support emotional recovery. 
+119
+Context: SGBV includes forced relationships. 
+Question: Is forced marriage abuse? 
+Answer: Yes. It is a form of SGBV. 
+  
+  120 
+ 
+Context: Survivors need legal awareness. 
+Question: Are there laws against SGBV? 
+Answer: Yes. Laws exist to protect survivors and punish offenders. 
+  
+  121 
+ 
+Context: Abuse can happen online. 
+Question: Is sharing private images abuse? 
+Answer: Yes. Sharing without consent is abuse. 
+  
+  122 
+ 
+Context: Survivors need support networks. 
+Question: Can NGOs help me? 
+Answer: Yes. Many NGOs provide free support services. 
+123
+Context: Survivors deserve respect. 
+Question: Will I be forced to speak? 
+Answer: No. You decide what to share. 
+  
+  124 
+ 
+Context: SGBV includes harassment. 
+Question: Is unwanted touching abuse? 
+Answer: Yes. It is sexual violence. 
+  
+  125 
+ 
+Context: Survivors can seek multiple supports. 
+Question: Can I go to more than one support center? 
+Answer: Yes. You can access multiple services. 
+  
+  126 
+ 
+Context: Support includes follow-up care. 
+Question: Will I be checked on after treatment? 
+Answer: Yes. Follow-up care may be provided. 
+127
+Context: Survivors deserve autonomy. 
+Question: Can I stop a process midway? 
+Answer: Yes. You can stop at any time. 
+  
+  128 
+ 
+Context: Abuse includes verbal harm. 
+Question: Is constant insult abuse? 
+Answer: Yes. It is emotional abuse. 
+  
+  129 
+ 
+Context: Survivors may need relocation. 
+Question: Can I move away for safety? 
+Answer: Yes. Moving to a safe place is an option. 
+  
+  130 
+ 
+Context: Support includes crisis help. 
+Question: Can I get emergency help quickly? 
+Answer: Yes. Emergency services are available. 
+131
+Context: Survivors need reassurance. 
+Question: Am I alone in this? 
+Answer: No. Many people experience this and support is available. 
+  
+  132 
+ 
+Context: Healing is possible. 
+Question: Can I live a normal life again? 
+Answer: Yes. With support, you can recover. 
+  
+  133 
+ 
+Context: SGBV includes manipulation. 
+Question: Is guilt-tripping abuse? 
+Answer: Yes. It is emotional manipulation. 
+  
+  134 
+ 
+Context: Survivors deserve freedom. 
+Question: Can I leave an abusive situation? 
+Answer: Yes. You have the right to leave. 
+135
+Context: Support includes guidance. 
+Question: Who can guide me through this process? 
+Answer: Trained professionals and support workers. 
+  
+  136 
+ 
+Context: Abuse impacts confidence. 
+Question: Why do I doubt myself? 
+Answer: Trauma can affect self-confidence. 
+  
+  137 
+ 
+Context: Survivors deserve validation. 
+Question: Are my feelings valid? 
+Answer: Yes. Your feelings are valid. 
+  
+  138 
+ 
+Context: SGBV includes coercion. 
+Question: Is blackmail abuse? 
+Answer: Yes. It is a form of coercion. 
+139
+Context: Survivors can seek help anytime. 
+Question: Is it too late to get help? 
+Answer: No. It is never too late. 
+  
+  140 
+ 
+Context: Support includes reassurance. 
+Question: Will I be okay? 
+Answer: Yes. With support, things can improve. 
+  
+  141 
+ 
+Context: Abuse affects well-being. 
+Question: Why do I feel anxious? 
+Answer: Anxiety is a common trauma response. 
+  
+  142 
+ 
+Context: Survivors deserve care. 
+Question: Can I get long-term support? 
+Answer: Yes. Long-term support is available. 
+143
+Context: SGBV includes intimidation. 
+Question: Is shouting and threatening abuse? 
+Answer: Yes. It is emotional abuse. 
+  
+  144 
+ 
+Context: Survivors need safe environments. 
+Question: Can I stay somewhere safe temporarily? 
+Answer: Yes. Shelters and safe spaces may be available. 
+  
+  145 
+ 
+Context: Support includes education. 
+Question: Can I learn how to protect myself? 
+Answer: Yes. Education and awareness can help. 
+  
+  146 
+ 
+Context: Survivors deserve empowerment. 
+Question: Can I rebuild my life? 
+Answer: Yes. Recovery and growth are possible. 
+147
+Context: Abuse includes restriction. 
+Question: Is stopping me from working abuse? 
+Answer: Yes. It is economic violence. 
+  
+  148 
+ 
+Context: Survivors deserve choices. 
+Question: Can I choose my support options? 
+Answer: Yes. You decide what support to receive. 
+  
+  149 
+ 
+Context: Healing takes time. 
+Question: Is it okay if I am not okay yet? 
+Answer: Yes. Healing is a process. 
+  
+  150 
+ 
+Context: Survivors deserve hope and support. 
+Question: Is there hope after abuse? 
+Answer: Yes. With the right support, healing and a better future are possible. 
+ 
+ 
+ 
