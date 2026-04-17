@@ -1,9 +1,21 @@
+
 import streamlit as st
 import time
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
 
+# =========================
+# SESSION STATE INIT (FIXED)
+# =========================
+if "page" not in st.session_state:
+    st.session_state.page = "home"
+
+if "dark_mode" not in st.session_state:
+    st.session_state.dark_mode = False
+
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 # =========================
 # 🔑 LOAD API KEY
 # =========================
@@ -55,31 +67,73 @@ def set_bg(image):
     """, unsafe_allow_html=True)
 
 # =========================
-# 🌙 DARK MODE DEFAULT
+# 🎨 THEME (FULL CONTROL)
 # =========================
-if "dark_mode" not in st.session_state:
-    st.session_state.dark_mode = True
-
 def set_theme():
     if st.session_state.dark_mode:
         st.markdown("""
         <style>
-        .stApp { color: white; }
-        .stButton>button { background-color: #262730; color: white; border-radius: 10px; }
+        .stApp {background-color:#0E1117;color:white;}
+        section[data-testid="stSidebar"] {background-color:#161A23;}
+        .stButton>button {
+            background:#262730;color:white;border-radius:10px;border:none;
+        }
         </style>
         """, unsafe_allow_html=True)
+
     else:
         st.markdown("""
         <style>
-        .stApp { color: black; }
-        .stButton>button { background-color: white; color: black; border-radius: 10px; }
+        /* MAIN APP */
+        .stApp {
+            background-color:#F5F7FA;
+            color:black;
+        }
+
+        /* ✅ SIDEBAR BACKGROUND */
+        section[data-testid="stSidebar"] {
+            background-color:#FFFFFF !important;
+        }
+
+        /* ✅ FORCE ALL SIDEBAR TEXT TO BLACK */
+        section[data-testid="stSidebar"] h1,
+        section[data-testid="stSidebar"] h2,
+        section[data-testid="stSidebar"] h3,
+        section[data-testid="stSidebar"] p,
+        section[data-testid="stSidebar"] span,
+        section[data-testid="stSidebar"] label,
+        section[data-testid="stSidebar"] div {
+            color: black !important;
+        }
+
+        /* ✅ BUTTON TEXT */
+        section[data-testid="stSidebar"] .stButton>button {
+            color: black !important;
+        }
+
+        /* ✅ CHAT TEXT */
+        .stChatMessage p {
+            color: black !important;
+        }
+
+        /* ✅ CHAT INPUT */
+        textarea {
+            color: black !important;
+            background-color: white !important;
+        }
+
+        /* NORMAL BUTTONS */
+        .stButton>button {
+            background:white;
+            color:black;
+            border-radius:10px;
+            border:1px solid #ccc;
+        }
         </style>
         """, unsafe_allow_html=True)
 
+
 set_theme()
-
-mode = "☀️ Light Mode" if st.session_state.dark_mode else "🌙 Dark Mode"
-
 # =========================
 # 📂 SIDEBAR
 # =========================
@@ -92,7 +146,8 @@ with st.sidebar:
     st.title("SGBV Support")
     st.caption("Powered by Atlas Initiative")
 
-    if st.button(mode):
+    # ✅ FIXED DARK MODE BUTTON (PUT HERE)
+    if st.button("🌙 Toggle Dark Mode"):
         st.session_state.dark_mode = not st.session_state.dark_mode
         st.rerun()
 
@@ -168,29 +223,33 @@ if st.session_state.page == "home":
         if st.button("🎓 Training", use_container_width=True):
             st.session_state.page = "training"
             st.rerun()
+            
+            # CHATBOT SESSION
 
-# =========================
-# 💬 CHATBOT PAGE
-# =========================
 elif st.session_state.page == "chatbot":
     set_bg("assets/bg_chat.jpg")
 
+    st.title("💬 SGBV Support Chat")
+
+    # ✅ Banner fix
     try:
         st.image("assets/chatbot_banner.png", use_container_width=True)
     except:
-        pass
+        st.warning("⚠️ Chatbot banner not found")
 
-    st.markdown("## 💬 SGBV Support Chat")
+    # ✅ Ensure first message
+    if len(st.session_state.messages) == 0:
+        st.session_state.messages.append({
+            "role": "assistant",
+            "content": "Hello 👋, I’m here to support you with any questions."
+        })
 
-    if "messages" not in st.session_state:
-        st.session_state.messages = [
-            {"role": "assistant", "content": "Hello 👋, I’m here to support you."}
-        ]
-
+    # Display messages
     for msg in st.session_state.messages:
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
 
+    # Input
     user_input = st.chat_input("Type your question...")
 
     if user_input:
@@ -200,28 +259,22 @@ elif st.session_state.page == "chatbot":
             placeholder = st.empty()
             full_response = ""
 
-            try:
-                response = client.chat.completions.create(
-                    model="gpt-4o-mini",
-                    messages=[
-                        {"role": "system", "content": system_prompt},
-                        {"role": "user", "content": user_input}
-                    ]
-                )
+            response = client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_input}
+                ]
+            )
 
-                reply = response.choices[0].message.content
+            reply = response.choices[0].message.content
 
-                # 🔥 Smooth typing (character-based)
-                for i in range(len(reply)):
-                    full_response = reply[:i+1]
-                    placeholder.markdown(full_response + "▌")
-                    time.sleep(0.005)
+            for i in range(len(reply)):
+                full_response = reply[:i+1]
+                placeholder.markdown(full_response + "▌")
+                time.sleep(0.005)
 
-                placeholder.markdown(full_response)
-
-            except Exception as e:
-                full_response = f"⚠️ Error: {e}"
-                placeholder.markdown(full_response)
+            placeholder.markdown(full_response)
 
         st.session_state.messages.append({"role": "assistant", "content": full_response})
 
@@ -229,20 +282,20 @@ elif st.session_state.page == "chatbot":
         st.session_state.page = "home"
         st.rerun()
 
-import streamlit as st
 
-# Helper for background
-def set_bg(url):
-    # Fixed: Use unsafe_allow_html=True instead of unsafe_content_as_template [cite: 58, 60]
-    st.markdown(f"""
-    <style>
-    .stApp {{
-        background-image: url("{url}");
-        background-size: cover;
-        background-position: center;
-    }}
-    </style>
-    """, unsafe_allow_html=True)
+
+# # Helper for background
+# def set_bg(url):
+#     # Fixed: Use unsafe_allow_html=True instead of unsafe_content_as_template [cite: 58, 60]
+#     st.markdown(f"""
+#     <style>
+#     .stApp {{
+#         background-image: url("{url}");
+#         background-size: cover;
+#         background-position: center;
+#     }}
+#     </style>
+#     """, unsafe_allow_html=True)
 
 # Initialize session state for navigation
 if 'page' not in st.session_state:
@@ -270,49 +323,253 @@ if st.session_state.page == "rights":
         st.rerun()
 
 # =========================
-# 🚨 EMERGENCY
+# 🚨 EMERGENCY PAGE
 # =========================
 elif st.session_state.page == "emergency":
-    set_bg("assets/bg_emergency.png")  # Updated to .png
+    set_bg("assets/bg_emergency.png")
     st.title("🚨 Emergency Contacts")
-    
-    st.markdown("### **Immediate Response (Lagos & Ogun)**")
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.error("**Lagos State (DSVA)**")
-        st.write("📞 **08000 333 333** (Toll-Free)")
-    
-    with col2:
-        st.error("**National & Ogun**")
-        st.write("📞 **112 / 767** (General Emergency)")
-        st.write("📞 **0800 72 73 2255** (National SGBV Line)")
 
-    st.warning("**Safety Tip:** If sexual assault has occurred, visit a SARC or PHC immediately to preserve evidence. ")
+    # =========================
+    # Lagos DSVA
+    # =========================
+    st.markdown("## 🛑 Lagos State SGBV Support")
 
-    if st.button("⬅ Back"):
-        st.session_state.page = "home"
-        st.rerun()
-
-# =========================
-# 📍 FIND HELP
-# =========================
-elif st.session_state.page == "help":
-    set_bg("assets/bg_help.png")  # Updated to .png
-    st.title("📍 Find Support Services")
-    
-    st.markdown("""
-    ### **Where to Go**
-    * **Primary Health Centres (PHCs):** These are the primary gateways for health and psychosocial referrals. 
-    * **Sexual Assault Referral Centres (SARC):** Specialized centers for clinical and forensic support. 
-    * **Champions:** Trusted community members who connect survivors to formal support systems. 
-    * **ELITE Project:** Provides assistance in urban and peri-urban informal settlements.
+    st.info("""
+Lagos State has a well-established Domestic and Sexual Violence Agency (DSVA) that provides 24/7 support, rescue, and referral services for survivors of abuse and violence.
     """)
 
-    if st.button("⬅ Back"):
-        st.session_state.page = "home"
-        st.rerun()
+    col1, col2 = st.columns(2)
 
+    with col1:
+        st.error("Lagos State DSVA Toll-Free Line")
+        st.write("📞 0-8000-333-333 (24/7)")
+
+    with col2:
+        st.error("National Emergency Lines")
+        st.write("📞 112")
+        st.write("📞 767")
+        st.write("📞 0800 7273 2255")
+
+    st.success("Always report to the nearest PHC, SARC, or hospital immediately after any incident.")
+
+    # =========================
+    # Lagos SARC Centres
+    # =========================
+    st.markdown("## 🏥 Lagos SARC Centres")
+
+    st.warning("Specialized Sexual Assault Referral Centres (SARCs) provide medical, psychological, and legal support.")
+
+    st.markdown("""
+### Mirabel Centre (SARC)
+📍 Lagos State University Teaching Hospital (LASUTH), Ikeja  
+📞 0815 577 0000 | 0818 724 3468 | 0701 349 1769  
+
+---
+
+### Idera Centre (SARC)
+📍 Alimosho General Hospital, Igando  
+📞 0815 047 3831 | 0905 589 1612  
+
+---
+
+### WARIF Centre (SARC)
+📍 Yaba, Lagos  
+📞 Toll-Free: 0800 921 00009  
+📞 Helpline: 0809 210 0009  
+""")
+
+    # =========================
+    # Ogun State Support
+    # =========================
+    st.markdown("## 🌿 Ogun State SGBV Support")
+
+    st.info("""
+Ogun State has expanded Sexual Assault Referral Centres (SARCs) across major zones to support survivors of violence.
+    """)
+
+    st.write("📞 Ogun State GBV Toll-Free Lines:")
+    st.write("0800 000 0666")
+    st.write("0800 000 0555")
+
+    st.markdown("""
+### SARC Locations in Ogun State
+- Abeokuta SARC – Sexual Assault Referral Centre  
+- Ilaro SARC – Sexual Assault Referral Centre  
+- Ijebu-Ode SARC – Sexual Assault Referral Centre  
+
+📞 Ministry of Health Support: 0802 876 6211
+""")
+
+    # =========================
+    # National Support
+    # =========================
+    st.markdown("## 🇳🇬 National & Child Protection Support")
+
+    st.write("📞 Federal GBV Helpline: 0800 72 73 2255")
+    st.write("📞 Child Helpline (Cece Yara): 0800 800 8001")
+
+    # =========================
+    # Safety Warning
+    # =========================
+    st.warning("""
+🚨 If you are in immediate danger:
+Call 112 or go to the nearest hospital, PHC, or police station immediately.
+""")
+
+# =========================
+# 📍 HELP (READY FOR LAGOS DATA)
+# =========================
+elif st.session_state.page == "help":
+    set_bg("assets/bg_help.png")
+    st.title("📍 Find Help")
+
+    state = st.selectbox("Select State", ["Lagos", "Ogun"])
+
+    # 🔥 ADD YOUR FULL LAGOS PHC LIST HERE
+    lagos_phcs = [
+  {"lga": "Alimosho LGA", "ward": "Alabata", "name": "Akowonjo PHC", "address": "100 Akowonjo Road, Vulganider B/S"},
+  {"lga": "Alimosho LGA", "ward": "Oguntaade Bameke", "name": "Orisunbare PHC", "address": "20 Ejigbo Road, Orisunmibare, Shasha"},
+
+  {"lga": "Agbado Oke Odo LCDA", "ward": "Agbado Okeodo", "name": "Oke Odo PHC", "address": "Ekoro Okeodo Road, Okeodo Abule Egba"},
+  {"lga": "Agbado Oke Odo LCDA", "ward": "Ajasa/Amikanle", "name": "Surulere PHC", "address": "3 Faith Rescue by Command Secondary School"},
+  {"lga": "Agbado Oke Odo LCDA", "ward": "Ajasa/Amikanle", "name": "Amikanle PHC", "address": "2/5 Fadipe Street, Agbado"},
+  {"lga": "Agbado Oke Odo LCDA", "ward": "Ajasa/Amikanle", "name": "Ikola PHC", "address": "Ikola Street"},
+  {"lga": "Agbado Oke Odo LCDA", "ward": "Abule Egba", "name": "Olota PHC", "address": "Olaloto Street, Abule Egba"},
+  {"lga": "Agbado Oke Odo LCDA", "ward": "Aboru", "name": "Aboru PHC", "address": "Yisa Street, Babalola Bus Stop"},
+  {"lga": "Agbado Oke Odo LCDA", "ward": "Aboru", "name": "Tinubu PHC", "address": "Along Agbelekale Road"},
+  {"lga": "Agbado Oke Odo LCDA", "ward": "Aboru", "name": "Ogundimu PHC", "address": "22 Awotedu Street"},
+  {"lga": "Agbado Oke Odo LCDA", "ward": "Alagbado/Alakuko", "name": "Agbado PHC", "address": "Old Ota Road"},
+  {"lga": "Agbado Oke Odo LCDA", "ward": "Agbele", "name": "Agbele PHC", "address": "12 Manner Street"},
+  {"lga": "Agbado Oke Odo LCDA", "ward": "Oki", "name": "Oki PHC", "address": "Iperun-Akisan Street, Old Ota Road"},
+
+  {"lga": "Ayobo Ipaja LCDA", "ward": "Ipaja", "name": "Ipaja PHC", "address": "Ayobo Road, Igbo-Gbila Bus Stop"},
+  {"lga": "Ayobo Ipaja LCDA", "ward": "Bada", "name": "Cele/Apata PHC", "address": "4 Bethel Street"},
+  {"lga": "Ayobo Ipaja LCDA", "ward": "Baruwa", "name": "Baruwa PHC", "address": "Progressive Estate"},
+  {"lga": "Ayobo Ipaja LCDA", "ward": "Ayobo", "name": "Ishefun PHC", "address": "Camp David Road"},
+  {"lga": "Ayobo Ipaja LCDA", "ward": "Ayobo", "name": "Ayobo PHC", "address": "Anisere Durojaiye Street"},
+
+  {"lga": "Egbe Idimu LCDA", "ward": "Isheri Olofin", "name": "Isheri Olofin PHC", "address": "LASU/Isheri Road"},
+  {"lga": "Egbe Idimu LCDA", "ward": "Idimu", "name": "Helen Aderonke Memorial PHC", "address": "Beside Olorunfunmi Secondary School"},
+  {"lga": "Egbe Idimu LCDA", "ward": "Egbe Agodo", "name": "Agodo PHC", "address": "6 Adeyinka Street"},
+
+  {"lga": "Ejigbo LCDA", "ward": "Fadu", "name": "Ejigbo PHC", "address": "38 Lafenwa Street"},
+  {"lga": "Ejigbo LCDA", "ward": "Ailegun", "name": "Iyana Ejigbo PHC", "address": "Iyana Ejigbo Bus Stop"},
+  {"lga": "Ejigbo LCDA", "ward": "Ifoshi", "name": "Ona Iwamimo PHC", "address": "Ona Iwamimo Street"},
+  {"lga": "Ejigbo LCDA", "ward": "Jakande", "name": "Jakande PHC", "address": "Oja Bus Stop"},
+
+  {"lga": "Igando Ikotun LCDA", "ward": "Ijegun", "name": "Ijegun PHC", "address": "Kudeyibu Street"},
+  {"lga": "Igando Ikotun LCDA", "ward": "Ikotun", "name": "Foundation PHC", "address": "Ikotun Idimu Road"},
+  {"lga": "Igando Ikotun LCDA", "ward": "Egan", "name": "Egan PHC", "address": "Akesan Bus Stop"},
+  {"lga": "Igando Ikotun LCDA", "ward": "Isheri Oshun", "name": "Isheri Oshun PHC", "address": "Last Bus Stop"},
+
+  {"lga": "Mosan Okunola LCDA", "ward": "Okunola", "name": "Rauf Aregbesola PHC", "address": "Okunola Road"},
+
+  {"lga": "Oriade LCDA", "ward": "Agboju", "name": "Agboju PHC", "address": "Baruwa Bus Stop"},
+  {"lga": "Oriade LCDA", "ward": "Satellite", "name": "Satellite PHC", "address": "Learning Field Road"},
+  {"lga": "Oriade LCDA", "ward": "Ibeshe", "name": "Ibeshe PHC", "address": "Beside Police Station"},
+  {"lga": "Oriade LCDA", "ward": "Kirikiri", "name": "Kirikiri PHC", "address": "In front of Female Prison"},
+
+  {"lga": "Agege LGA", "ward": "Keke", "name": "Sango PHC", "address": "Balogun Road"},
+  {"lga": "Agege LGA", "ward": "Isale Oja", "name": "Iloro PHC", "address": "Olufeso Street"},
+  {"lga": "Agege LGA", "ward": "Dopeemu", "name": "Dopeemu PHC", "address": "Shitta Street"},
+  {"lga": "Agege LGA", "ward": "Sango", "name": "Ajegunle Health Post", "address": "Ajigbotinu Street"},
+
+  {"lga": "Ifako Ijaiye LGA", "ward": "Ifako Coker", "name": "Ifako PHC", "address": "Ajilete Street"},
+  {"lga": "Ifako Ijaiye LGA", "ward": "Iju Ishaga", "name": "Iju PHC", "address": "Ladipo Avenue"},
+  {"lga": "Ifako Ijaiye LGA", "ward": "Iju Obawole", "name": "Obawole PHC", "address": "Asabi Taiwo Street"},
+  {"lga": "Ifako Ijaiye LGA", "ward": "Ogundimu", "name": "Ogundimu PHC", "address": "Kayode Street"},
+
+  {"lga": "Kosofe LGA", "ward": "Mende", "name": "Mende PHC", "address": "Bode Oluwo Street"},
+  {"lga": "Kosofe LGA", "ward": "Ogudu", "name": "Ogudu PHC", "address": "Ogudu Road"},
+  {"lga": "Kosofe LGA", "ward": "Orile Oworo", "name": "Oworo PHC", "address": "Gbenga Asabi Street"}
+]
+
+    ogun_phcs = [
+  {"lga": "Abeokuta North LGA", "ward": "", "name": "Odeda Local Government Health Clinic", "address": ""},
+  {"lga": "Abeokuta North LGA", "ward": "", "name": "Ikeye Health Centre", "address": ""},
+
+  {"lga": "Abeokuta South LGA", "ward": "", "name": "Family Health Centre Health Center", "address": ""},
+  {"lga": "Abeokuta South LGA", "ward": "", "name": "Ijaye Health Centre Health Center", "address": ""},
+  {"lga": "Abeokuta South LGA", "ward": "", "name": "Saraki Health Center", "address": ""},
+  {"lga": "Abeokuta South LGA", "ward": "", "name": "Oke Ijemo Health Post", "address": ""},
+  {"lga": "Abeokuta South LGA", "ward": "", "name": "Iyabo Morenike Healthcare and Birth Home", "address": ""},
+  {"lga": "Abeokuta South LGA", "ward": "", "name": "Keesi Primary Health Centre", "address": ""},
+  {"lga": "Abeokuta South LGA", "ward": "", "name": "Itoko Health Center", "address": ""},
+  {"lga": "Abeokuta South LGA", "ward": "", "name": "Kugba Health Centre", "address": ""},
+  {"lga": "Abeokuta South LGA", "ward": "", "name": "OOUTH Annex Health Center", "address": ""},
+  {"lga": "Abeokuta South LGA", "ward": "", "name": "Abule Oloni Health Centre", "address": ""},
+  {"lga": "Abeokuta South LGA", "ward": "", "name": "Oba Gbadebo Health Facility", "address": ""},
+  {"lga": "Abeokuta South LGA", "ward": "", "name": "Igbore Health Centre", "address": ""},
+
+  {"lga": "Ado-Odo/Ota LGA", "ward": "", "name": "Ife Health Center", "address": ""},
+  {"lga": "Ado-Odo/Ota LGA", "ward": "", "name": "Ijoko Health Post", "address": ""},
+  {"lga": "Ado-Odo/Ota LGA", "ward": "", "name": "Iroko/Aparadija Health Center", "address": ""},
+  {"lga": "Ado-Odo/Ota LGA", "ward": "", "name": "Iloye Primary Health Center", "address": ""},
+  {"lga": "Ado-Odo/Ota LGA", "ward": "", "name": "Olorunsogo Iloye Health Post", "address": ""},
+  {"lga": "Ado-Odo/Ota LGA", "ward": "", "name": "Sango Primary Health Center", "address": ""},
+  {"lga": "Ado-Odo/Ota LGA", "ward": "", "name": "Owode Primary Health Center", "address": ""},
+  {"lga": "Ado-Odo/Ota LGA", "ward": "", "name": "Ewupe Health Center", "address": ""},
+  {"lga": "Ado-Odo/Ota LGA", "ward": "", "name": "Otun Primary Health Center", "address": ""},
+  {"lga": "Ado-Odo/Ota LGA", "ward": "", "name": "Ota Primary Health Center", "address": ""},
+  {"lga": "Ado-Odo/Ota LGA", "ward": "", "name": "Ilo Awela Health Center", "address": ""},
+  {"lga": "Ado-Odo/Ota LGA", "ward": "", "name": "Osinachi Primary Health Center", "address": ""},
+  {"lga": "Ado-Odo/Ota LGA", "ward": "", "name": "Ijoko Primary Health Center", "address": ""},
+  {"lga": "Ado-Odo/Ota LGA", "ward": "", "name": "Iju Health Center", "address": ""},
+
+  {"lga": "Yewa North LGA", "ward": "", "name": "Family Health Centre Ibile", "address": ""},
+  {"lga": "Yewa North LGA", "ward": "", "name": "Primary Health Center Idofoi", "address": ""},
+  {"lga": "Yewa North LGA", "ward": "", "name": "Isa Ope Health Center", "address": ""},
+  {"lga": "Yewa North LGA", "ward": "", "name": "Igan Okoto Health Center", "address": ""},
+  {"lga": "Yewa North LGA", "ward": "", "name": "Ilujoda/Iboro Health Center", "address": ""},
+  {"lga": "Yewa North LGA", "ward": "", "name": "Imasai Health Center", "address": ""},
+  {"lga": "Yewa North LGA", "ward": "", "name": "Joga Orile Health Center", "address": ""},
+  {"lga": "Yewa North LGA", "ward": "", "name": "Igbogila Health Center", "address": ""},
+  {"lga": "Yewa North LGA", "ward": "", "name": "Eggua Health Center", "address": ""},
+  {"lga": "Yewa North LGA", "ward": "", "name": "Ijoun Health Center", "address": ""},
+  {"lga": "Yewa North LGA", "ward": "", "name": "Afon Health Center", "address": ""},
+
+  {"lga": "Ijebu North LGA", "ward": "", "name": "Oke Agbo Health Center", "address": ""},
+  {"lga": "Ijebu North LGA", "ward": "", "name": "Oru Awa Ilaporu Health Center", "address": ""},
+
+  {"lga": "Ifo LGA", "ward": "", "name": "Robiyan Health Center", "address": ""},
+
+  {"lga": "Ijebu Ode LGA", "ward": "", "name": "Iwade Isale Health Centre", "address": ""},
+
+  {"lga": "Ijebu North-East LGA", "ward": "", "name": "Oke Eri Community PHC", "address": ""},
+
+  {"lga": "Imeko Afon LGA", "ward": "", "name": "Ilara PHC", "address": ""},
+  {"lga": "Imeko Afon LGA", "ward": "", "name": "Primary Health Care Center Ilara", "address": ""},
+  {"lga": "Imeko Afon LGA", "ward": "", "name": "Agberiodo Primary Health Center", "address": ""},
+  {"lga": "Imeko Afon LGA", "ward": "", "name": "Imeko/Dende Primary Health Center", "address": ""},
+  {"lga": "Imeko Afon LGA", "ward": "", "name": "Idofa Health Clinic", "address": ""},
+
+  {"lga": "Ikenne LGA", "ward": "", "name": "Ago Ilara Health Centre", "address": ""},
+  {"lga": "Ikenne LGA", "ward": "", "name": "Ilishan PHC", "address": ""},
+  {"lga": "Ikenne LGA", "ward": "", "name": "Ago Ilara PHC", "address": ""},
+  {"lga": "Ikenne LGA", "ward": "", "name": "Iregun Health Center", "address": ""},
+  {"lga": "Ikenne LGA", "ward": "", "name": "Imobido Health Center", "address": ""},
+  {"lga": "Ikenne LGA", "ward": "", "name": "Irolu PHC", "address": ""},
+  {"lga": "Ikenne LGA", "ward": "", "name": "Ogere PHC", "address": ""},
+  {"lga": "Ikenne LGA", "ward": "", "name": "Ikenne Health Center", "address": ""},
+  {"lga": "Ikenne LGA", "ward": "", "name": "Iperu PHC", "address": ""},
+
+  {"lga": "Odeda LGA", "ward": "", "name": "Engr Adisa Adeyinka Primary Healthcare Centre", "address": ""},
+  {"lga": "Odeda LGA", "ward": "", "name": "Baale Ogunbayo Health Clinic", "address": ""},
+  {"lga": "Odeda LGA", "ward": "", "name": "Odeda Primary Health Centre", "address": ""},
+  {"lga": "Odeda LGA", "ward": "", "name": "Orile Ilugun Health Centre", "address": ""},
+  {"lga": "Odeda LGA", "ward": "", "name": "Primary Health Centre Obete", "address": ""},
+  {"lga": "Odeda LGA", "ward": "", "name": "Opeji Local Council Area Health Centre", "address": ""},
+  {"lga": "Odeda LGA", "ward": "", "name": "Osiele Primary Health Centre", "address": ""},
+  {"lga": "Odeda LGA", "ward": "", "name": "Primary Health Centre Obantoko", "address": ""},
+  {"lga": "Odeda LGA", "ward": "", "name": "Primary Health Clinic Emulu", "address": ""}
+]
+
+    data = lagos_phcs if state == "Lagos" else ogun_phcs
+
+    lga = st.selectbox("Select LGA", list(set([d["lga"] for d in data])))
+
+    for phc in [d for d in data if d["lga"] == lga]:
+        st.success(f"{phc['name']} - {phc['address']}")
 # =========================
 # 🎓 TRAINING
 # =========================
