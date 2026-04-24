@@ -2,6 +2,21 @@
 import streamlit as st
 import time
 import os
+import base64 
+
+def show_pdf(file_path):
+    with open(file_path, "rb") as f:
+        base64_pdf = base64.b64encode(f.read()).decode("utf-8")
+
+    pdf_display = f"""
+    <iframe 
+        src="data:application/pdf;base64,{base64_pdf}" 
+        width="100%" 
+        height="700px">
+    </iframe>
+    """
+    st.markdown(pdf_display, unsafe_allow_html=True)
+
 from dotenv import load_dotenv
 from openai import OpenAI
 
@@ -415,14 +430,32 @@ Ogun State has expanded Sexual Assault Referral Centres (SARCs) across major zon
 🚨 If you are in immediate danger:
 Call 112 or go to the nearest hospital, PHC, or police station immediately.
 """)
-
 # =========================
-# 📍 HELP (READY FOR LAGOS DATA)
+# 📍 HELP
 # =========================
 elif st.session_state.page == "help":
     set_bg("assets/bg_help.png")
     st.title("📍 Find Help")
 
+    st.markdown("## 📄 Help Documents")
+
+    # ✅ DOCUMENT 1
+    with open("assets/Primary Health Centers in Lagos State.docx", "rb") as file:
+        st.download_button(
+            label="📥 Download Primary Health Centers in Lagos State",
+            data=file,
+            file_name="Primary Health Centers in Lagos State.docx"
+        )
+
+    # ✅ DOCUMENT 2
+    with open("assets/Primary Health Centers in Ogun State.docx", "rb") as file:
+        st.download_button(
+            label="📥 Download Primary Health Centers in Ogun State",
+            data=file,
+            file_name="Primary Health Centers in Ogun State.docx"
+        )
+
+    # ✅ STATE SELECT
     state = st.selectbox("Select State", ["Lagos", "Ogun"])
 
     # 🔥 ADD YOUR FULL LAGOS PHC LIST HERE
@@ -573,10 +606,20 @@ elif st.session_state.page == "help":
 # =========================
 # 🎓 TRAINING
 # =========================
+
+
 elif st.session_state.page == "training":
     set_bg("assets/bg_training.png")
     st.title("🎓 SGBV Training")
-    
+
+
+    # ✅ DOWNLOAD BUTTON
+    with open("assets/SGBV Champions manual_20260119_072455_0000.pdf", "rb") as file:
+        st.download_button(
+            "📥 Download Training Manual",
+            file,
+            file_name="SGBV Champions manual_20260119_072455_0000.pdf"
+        )
     st.markdown("""
     ### **What is SGBV ?**
     SGBV stands for Sexual and Gender-Based Violence. it is defined as any harmful act perpetrated against a person’s will that is rooted in socially constructed gender roles, power differences, and inequality.
