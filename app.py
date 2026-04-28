@@ -144,6 +144,14 @@ def set_theme():
             border-radius:10px;
             border:1px solid #ccc;
         }
+        
+        /* DOWNLOAD BUTTON FIX */
+.stDownloadButton>button {
+    background-color: #E3F2FD !important;  /* light blue */
+    color: black !important;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
         </style>
         """, unsafe_allow_html=True)
 
@@ -213,28 +221,28 @@ if st.session_state.page == "home":
     col1, col2 = st.columns(2)
 
     with col1:
-        st.image("assets/chatbot.png", use_container_width=True)
+        st.image("assets/chatbot.jpg", use_container_width=True)
         if st.button("🤖 Open Chatbot", use_container_width=True):
             st.session_state.page = "chatbot"
             st.rerun()
 
-        st.image("assets/rights.png", use_container_width=True)
+        st.image("assets/right.jpg", use_container_width=True)
         if st.button("📘 Know Your Rights", use_container_width=True):
             st.session_state.page = "rights"
             st.rerun()
 
-        st.image("assets/emergency.png", use_container_width=True)
+        st.image("assets/emergency.jpg", use_container_width=True)
         if st.button("🚨 Emergency", use_container_width=True):
             st.session_state.page = "emergency"
             st.rerun()
 
     with col2:
-        st.image("assets/help.png", use_container_width=True)
+        st.image("assets/help.jpg", use_container_width=True)
         if st.button("📍 Find Help", use_container_width=True):
             st.session_state.page = "help"
             st.rerun()
 
-        st.image("assets/training.png", use_container_width=True)
+        st.image("assets/training.jpg", use_container_width=True)
         if st.button("🎓 Training", use_container_width=True):
             st.session_state.page = "training"
             st.rerun()
