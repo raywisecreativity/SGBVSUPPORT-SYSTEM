@@ -341,6 +341,13 @@ if st.session_state.page == "rights":
     * **Survivor Rights:** You have a legal right to medical care, protection, and legal remedies.
     """)
 
+ # ✅ DOWNLOAD BUTTON
+    with open("assets/Violence-Against-Persons-Prohibition-Act-2015-1.pdf", "rb") as file:
+        st.download_button(
+            "📥 Download Violence-Against-Persons-Prohibition-Act-2015-1.pdf",
+            file,
+            file_name="Violence-Against-Persons-Prohibition-Act-2015-1.pdf"
+        )
     if st.button("⬅ Back"):
         st.session_state.page = "home"
         st.rerun()
@@ -378,10 +385,6 @@ Lagos State has a well-established Domestic and Sexual Violence Agency (DSVA) th
     # =========================
     # Lagos SARC Centres
     # =========================
-    st.markdown("## 🏥 Lagos SARC Centres")
-
-    st.warning("Specialized Sexual Assault Referral Centres (SARCs) provide medical, psychological, and legal support.")
-
     st.markdown("""
 ### Mirabel Centre (SARC)
 📍 Lagos State University Teaching Hospital (LASUTH), Ikeja  
@@ -399,6 +402,11 @@ Lagos State has a well-established Domestic and Sexual Violence Agency (DSVA) th
 📍 Yaba, Lagos  
 📞 Toll-Free: 0800 921 00009  
 📞 Helpline: 0809 210 0009  
+
+---
+
+### Community Women's Rights Foundation (CWRF)
+📞 Helpline: 0809 210 0009
 """)
 
     # =========================
@@ -415,12 +423,40 @@ Ogun State has expanded Sexual Assault Referral Centres (SARCs) across major zon
     st.write("0800 000 0555")
 
     st.markdown("""
-### SARC Locations in Ogun State
-- Abeokuta SARC – Sexual Assault Referral Centre  
-- Ilaro SARC – Sexual Assault Referral Centre  
-- Ijebu-Ode SARC – Sexual Assault Referral Centre  
+## 🌿 Ogun State SARC Locations
 
-📞 Ministry of Health Support: 0802 876 6211
+Specialized Sexual Assault Referral Centres (SARCs) provide **medical, psychological, and legal support** for survivors.
+
+---
+
+### 🏥 Sagamu SARC
+📍 Olabisi Onabanjo University Teaching Hospital (OOUTH), Sagamu  
+📞 0800 0000 555  
+💬 WhatsApp: 0807 129 0703  
+📧 Email: ogsarc21@gmail.com  
+
+---
+
+### 🏥 Ilaro SARC
+📍 Ilaro Safe Centre, Block 2–8, Oba Olugbenle Palace Way, Adjacent Recreation Club, Ilaro, Ogun State  
+📞 0800 0000 077  
+📧 Email: ilarosafecentre@gmail.com  
+
+---
+
+### 🏥 Ijebu-Ode SARC
+📍 Ijebu-Ode Safe Centre, Igneba Road, Off Elebute, Ijebu-Ode, Ogun State  
+📞 0800 0000 088  
+📧 Email: ogunstatesarcijebuode@gmail.com  
+
+---
+
+### 🏥 Abeokuta SARC (Asero)
+📍 Beside Juvenile Home, Asero Garage, Abeokuta  
+📞 0800 0000 099  
+📧 Email: sarcasero@gmail.com  
+
+---
 """)
 
     # =========================
