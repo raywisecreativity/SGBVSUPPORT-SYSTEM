@@ -209,44 +209,142 @@ st.markdown("[Visit Website](https://raywisecreativity.netlify.app/)")
 # =========================
 if "page" not in st.session_state:
     st.session_state.page = "home"
-
 # =========================
-# 🏠 HOME PAGE (WITH IMAGES)
+# =========================
+# 🏠 HOME PAGE (PROFESSIONAL GRID)
 # =========================
 if st.session_state.page == "home":
     set_bg("assets/bg_home.jpg")
 
     st.markdown("## 🧭 Choose a Service")
 
-    col1, col2 = st.columns(2)
+    # =========================
+    # CUSTOM CARD CSS
+    # =========================
+    st.markdown("""
+    <style>
+    .service-card {
+        background: rgba(255,255,255,0.08);
+        padding: 10px;
+        border-radius: 15px;
+        text-align: center;
+        margin-bottom: 15px;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 
+    .service-card img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+
+    .stButton button {
+        width: 100%;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 768px) {
+        .service-card {
+            height: 220px;
+        }
+
+        .service-card img {
+            height: 120px;
+        }
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    # =========================
+    # 3 COLUMNS
+    # =========================
+    col1, col2, col3 = st.columns(3)
+
+    # =========================
+    # COLUMN 1
+    # =========================
     with col1:
-        st.image("assets/chatbot.jpg", use_container_width=True)
-        if st.button("🤖 Open Chatbot", use_container_width=True):
+
+        st.markdown("""
+        <div class="service-card">
+            <img src="data:image/png;base64,{}">
+        </div>
+        """.format(
+            base64.b64encode(open("assets/chatbot_banner.png", "rb").read()).decode()
+        ), unsafe_allow_html=True)
+
+        if st.button("🤖 Chatbot", key="chatbot"):
             st.session_state.page = "chatbot"
             st.rerun()
 
-        st.image("assets/right.jpg", use_container_width=True)
-        if st.button("📘 Know Your Rights", use_container_width=True):
-            st.session_state.page = "rights"
-            st.rerun()
+        st.markdown("""
+        <div class="service-card">
+            <img src="data:image/png;base64,{}">
+        </div>
+        """.format(
+            base64.b64encode(open("assets/help.jpg", "rb").read()).decode()
+        ), unsafe_allow_html=True)
 
-        st.image("assets/emergency.jpg", use_container_width=True)
-        if st.button("🚨 Emergency", use_container_width=True):
-            st.session_state.page = "emergency"
-            st.rerun()
-
-    with col2:
-        st.image("assets/help.jpg", use_container_width=True)
-        if st.button("📍 Find Help", use_container_width=True):
+        if st.button("📍 Help", key="help"):
             st.session_state.page = "help"
             st.rerun()
 
-        st.image("assets/training.jpg", use_container_width=True)
-        if st.button("🎓 Training", use_container_width=True):
+    # =========================
+    # COLUMN 2
+    # =========================
+    with col2:
+
+        st.markdown("""
+        <div class="service-card">
+            <img src="data:image/png;base64,{}">
+        </div>
+        """.format(
+            base64.b64encode(open("assets/right.jpg", "rb").read()).decode()
+        ), unsafe_allow_html=True)
+
+        if st.button("📘 Rights", key="rights"):
+            st.session_state.page = "rights"
+            st.rerun()
+
+        st.markdown("""
+        <div class="service-card">
+            <img src="data:image/png;base64,{}">
+        </div>
+        """.format(
+            base64.b64encode(open("assets/training.jpg", "rb").read()).decode()
+        ), unsafe_allow_html=True)
+
+        if st.button("🎓 Training", key="training"):
             st.session_state.page = "training"
             st.rerun()
-            
+
+    # =========================
+    # COLUMN 3
+    # =========================
+    with col3:
+
+        st.markdown("""
+        <div class="service-card">
+            <img src="data:image/png;base64,{}">
+        </div>
+        """.format(
+            base64.b64encode(open("assets/emergency.jpg", "rb").read()).decode()
+        ), unsafe_allow_html=True)
+
+        if st.button("🚨 Emergency", key="emergency"):
+            st.session_state.page = "emergency"
+            st.rerun()
+        
+        
+        
+        
+        
             # CHATBOT SESSION
 
 elif st.session_state.page == "chatbot":
@@ -386,6 +484,14 @@ Lagos State has a well-established Domestic and Sexual Violence Agency (DSVA) th
     # Lagos SARC Centres
     # =========================
     st.markdown("""
+### ATLAS Initiative
+📍 Block 4 Suru Ibeshe Garden Estate, Owode-Ibeshe,Ikorodu.Lagos
+ 
+📞 +2348078072911
+
+📧  safeguard@atlas.org.ng , atlasinitiativenigeria@gmail.com
+
+---
 ### Mirabel Centre (SARC)
 📍 Lagos State University Teaching Hospital (LASUTH), Ikeja  
 📞 0815 577 0000 | 0818 724 3468 | 0701 349 1769  
