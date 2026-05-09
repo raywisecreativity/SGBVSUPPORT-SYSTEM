@@ -210,60 +210,62 @@ st.markdown("[Visit Website](https://raywisecreativity.netlify.app/)")
 if "page" not in st.session_state:
     st.session_state.page = "home"
 # =========================
+
+
+
 # =========================
-# 🏠 HOME PAGE (PROFESSIONAL GRID)
+# 🏠 HOME PAGE
 # =========================
 if st.session_state.page == "home":
+
     set_bg("assets/bg_home.jpg")
 
-    st.markdown("## 🧭 Choose a Service")
-
-    # =========================
-    # CUSTOM CARD CSS
-    # =========================
+    # ✅ PROFESSIONAL HOME PAGE STYLING ONLY
     st.markdown("""
     <style>
-    .service-card {
-        background: rgba(255,255,255,0.08);
-        padding: 10px;
-        border-radius: 15px;
-        text-align: center;
-        margin-bottom: 15px;
-        height: 250px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
 
-    .service-card img {
-        width: 100%;
-        height: 140px;
+    /* ONLY HOME PAGE CARD IMAGES */
+    .home-card img {
+        border-radius: 18px;
+        width: 100% !important;
+        height: 180px !important;
         object-fit: cover;
-        border-radius: 12px;
+        transition: 0.3s;
     }
 
-    .stButton button {
+    .home-card img:hover {
+        transform: scale(1.02);
+    }
+
+    /* CLEAN BUTTON STYLE */
+    .stButton > button {
         width: 100%;
-        border-radius: 10px;
-        font-weight: bold;
+        border-radius: 12px;
+        height: 45px;
+        font-size: 15px;
+        font-weight: 600;
+        border: none;
     }
 
-    /* MOBILE RESPONSIVE */
-    @media (max-width: 768px) {
-        .service-card {
-            height: 220px;
-        }
-
-        .service-card img {
-            height: 120px;
-        }
+    /* CLEAN PAGE SPACING */
+    .block-container {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
     }
+
     </style>
     """, unsafe_allow_html=True)
 
-    # =========================
-    # 3 COLUMNS
-    # =========================
+    st.markdown(
+        """
+        <h2 style='text-align:center; margin-bottom:20px;'>
+        🧭 Choose a Service
+        </h2>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # ✅ 3 CLEAN COLUMNS
     col1, col2, col3 = st.columns(3)
 
     # =========================
@@ -271,28 +273,20 @@ if st.session_state.page == "home":
     # =========================
     with col1:
 
-        st.markdown("""
-        <div class="service-card">
-            <img src="data:image/png;base64,{}">
-        </div>
-        """.format(
-            base64.b64encode(open("assets/chatbot_banner.png", "rb").read()).decode()
-        ), unsafe_allow_html=True)
+        st.markdown('<div class="home-card">', unsafe_allow_html=True)
+        st.image("assets/chatbot_banner.png", use_container_width=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
-        if st.button("🤖 Chatbot", key="chatbot"):
+        if st.button("🤖 Chatbot", use_container_width=True):
             st.session_state.page = "chatbot"
             st.rerun()
 
-        st.markdown("""
-        <div class="service-card">
-            <img src="data:image/png;base64,{}">
-        </div>
-        """.format(
-            base64.b64encode(open("assets/help.jpg", "rb").read()).decode()
-        ), unsafe_allow_html=True)
+        st.markdown('<div class="home-card">', unsafe_allow_html=True)
+        st.image("assets/right.jpg", use_container_width=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
-        if st.button("📍 Help", key="help"):
-            st.session_state.page = "help"
+        if st.button("📘 Rights", use_container_width=True):
+            st.session_state.page = "rights"
             st.rerun()
 
     # =========================
@@ -300,28 +294,20 @@ if st.session_state.page == "home":
     # =========================
     with col2:
 
-        st.markdown("""
-        <div class="service-card">
-            <img src="data:image/png;base64,{}">
-        </div>
-        """.format(
-            base64.b64encode(open("assets/right.jpg", "rb").read()).decode()
-        ), unsafe_allow_html=True)
+        st.markdown('<div class="home-card">', unsafe_allow_html=True)
+        st.image("assets/emergency.jpg", use_container_width=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
-        if st.button("📘 Rights", key="rights"):
-            st.session_state.page = "rights"
+        if st.button("🚨 Emergency", use_container_width=True):
+            st.session_state.page = "emergency"
             st.rerun()
 
-        st.markdown("""
-        <div class="service-card">
-            <img src="data:image/png;base64,{}">
-        </div>
-        """.format(
-            base64.b64encode(open("assets/training.jpg", "rb").read()).decode()
-        ), unsafe_allow_html=True)
+        st.markdown('<div class="home-card">', unsafe_allow_html=True)
+        st.image("assets/help.jpg", use_container_width=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
-        if st.button("🎓 Training", key="training"):
-            st.session_state.page = "training"
+        if st.button("📍 Help", use_container_width=True):
+            st.session_state.page = "help"
             st.rerun()
 
     # =========================
@@ -329,20 +315,13 @@ if st.session_state.page == "home":
     # =========================
     with col3:
 
-        st.markdown("""
-        <div class="service-card">
-            <img src="data:image/png;base64,{}">
-        </div>
-        """.format(
-            base64.b64encode(open("assets/emergency.jpg", "rb").read()).decode()
-        ), unsafe_allow_html=True)
+        st.markdown('<div class="home-card">', unsafe_allow_html=True)
+        st.image("assets/training.jpg", use_container_width=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
-        if st.button("🚨 Emergency", key="emergency"):
-            st.session_state.page = "emergency"
+        if st.button("🎓 Training", use_container_width=True):
+            st.session_state.page = "training"
             st.rerun()
-        
-        
-        
         
         
             # CHATBOT SESSION
